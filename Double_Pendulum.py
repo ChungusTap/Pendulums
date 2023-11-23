@@ -48,3 +48,6 @@ def animate(i):
 # Create an animation
 ani = FuncAnimation(plt.gcf(), animate, frames=len(t), interval=20, blit=False)
 plt.show()
+
+#Terminal (cd ~/Downloads/Pendulums) self
+#To run use python3 Double_Pendulum.py
