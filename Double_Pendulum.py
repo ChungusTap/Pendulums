@@ -35,19 +35,22 @@ sol = odeint(derivs, y0, t, args=(l1, l2, m1, m2, g))
 
 # Animation function for visualization
 def animate(i):
-    plt.clf()
+    ax.clear()  # Clear the Axes object
     x1 = l1 * np.sin(sol[i, 0])
     y1 = -l1 * np.cos(sol[i, 0])
     x2 = x1 + l2 * np.sin(sol[i, 2])
     y2 = y1 - l2 * np.cos(sol[i, 2])
 
-    plt.plot([0, x1, x2], [0, y1, y2], marker='o')
-    plt.xlim([-2, 2])
-    plt.ylim([-2, 2])
+    ax.plot([0, x1, x2], [0, y1, y2], marker='o')
+    ax.set_xlim([-2, 2])
+    ax.set_ylim([-2, 2])
 
-# Create an animation
-ani = FuncAnimation(plt.gcf(), animate, frames=len(t), interval=20, blit=False)
+#Animation
+fig, ax = plt.subplots()
+ani = FuncAnimation(fig, animate, frames=len(t), interval=20, blit=False)
 plt.show()
+plt.close()
+
 
 #Terminal (cd ~/Downloads/Pendulums) self example (Basically, just set the path)
 #To run use python3 Double_Pendulum.py (for zsh, BASH is different for Vscode)
